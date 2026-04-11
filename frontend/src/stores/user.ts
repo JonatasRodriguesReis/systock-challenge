@@ -49,7 +49,13 @@ export const useUserStore = defineStore("users", {
 
     async saveUser(userData: APICreateUpdateUserRequest) {
       if (userData.id) {
-        return await api.put(`${API_ROUTES.USERS}/${userData.id}`, userData);
+        const updateData = {
+          nome: userData.nome,
+          email: userData.email,
+          cpf: userData.cpf,
+        };
+
+        return await api.put(`${API_ROUTES.USERS}/${userData.id}`, updateData);
       }
       return await api.post(API_ROUTES.USERS, userData);
     },

@@ -4,6 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\User;
 use App\Repositories\Contracts\UserRepositoryInterface;
+use Illuminate\Support\Arr;
 
 
 /**
@@ -42,6 +43,11 @@ class UserRepository implements UserRepositoryInterface {
     public function create(array $data) { return User::create($data); }
     public function update(int $id, array $data) {
         $user = $this->find($id);
+
+        // Remove a senha do array se ela estiver presente. Reset de senha deve ser feito por um endpoint específico.
+        $data = Arr::except($data, ['senha']);
+        $data = array_filter($data, fn($value) => !is_null($value));
+
         $user->update($data);
         return $user;
     }
