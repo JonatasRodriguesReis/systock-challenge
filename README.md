@@ -69,6 +69,12 @@ Execute o comando abaixo para garantir que o script de entrada seja executável:
 chmod +x backend/docker/entrypoint.sh
 ```
 
+Crie os arquivos de ambiente no backend (Você pode utilizar o .env.example)
+
+```bash
+cp backend/.env.example backend/.env
+```
+
 Suba a stack completa
 
 ```bash
