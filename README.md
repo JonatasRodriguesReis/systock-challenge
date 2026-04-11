@@ -95,7 +95,7 @@ Nota: O sistema executa automaticamente composer install, npm install, migration
 
 ## 🧪 Testes Automatizados
 
-A suíte de testes cobre as operações críticas de CRUD, autenticação e filtros de busca (Sort, Search e Pagination).
+A suíte de testes cobre as operações críticas de CRUD de usuários e produtos, filtros de busca (Sort, Search e Pagination).
 
 Para rodar os testes dentro do container:
 
@@ -108,11 +108,17 @@ docker exec -it systock-api php artisan test
 | Método   | Endpoint             | Descrição                                  |
 | :------- | :------------------- | :----------------------------------------- |
 | `POST`   | `/api/login`         | Autenticação e criação de sessão           |
+| `POST`   | `/api/logout`        | Logout e encerramento da sessão            |
+| `GET`    | `/api/me`            | Retorna os dados do usuário logado         |
 | `GET`    | `/api/usuarios`      | Listagem com Paginação/Filtros/Sort        |
 | `POST`   | `/api/usuarios`      | Cadastro de novo usuário                   |
 | `PUT`    | `/api/usuarios/{id}` | Edição de usuário                          |
 | `DELETE` | `/api/usuarios/{id}` | Exclusão de usuário                        |
-| `GET`    | `/api/produtos`      | Listagem geral de produtos                 |
+| `GET`    | `/api/produtos`      | Listagem com Paginação/Filtros/Sort        |
+| `GET`    | `/api/me/produtos`   | Listagem dos produtos do usuário logado    |
+| `POST`   | `/api/produtos`      | Cadastro de novo produto                   |
+| `PUT`    | `/api/produtos/{id}` | Edição de produto                          |
+| `DELETE` | `/api/produtos/{id}` | Exclusão de produto                        |
 | `GET`    | `/api/relatorio-sql` | Relatório em SQL Puro (Requisito Opcional) |
 
 ## 🔐 Segurança e Regras de Negócio (Authorization)
