@@ -12,8 +12,8 @@ class ProductRepository implements ProductRepositoryInterface {
         if (!empty($params['search'])) {
             $search = $params['search'];
             $query->where(function($q) use ($search) {
-                $q->where('nome', 'ilike', "%{$search}%")
-                  ->orWhere('descricao', 'ilike', "%{$search}%");
+                $q->where('nome', 'like', "%{$search}%")
+                  ->orWhere('descricao', 'like', "%{$search}%");
             });
         }
 

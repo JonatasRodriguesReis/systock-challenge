@@ -19,8 +19,8 @@ class UserRepository implements UserRepositoryInterface {
         if (!empty($params['search'])) {
             $search = $params['search'];
             $query->where(function($q) use ($search) {
-                $q->where('nome', 'ilike', "%{$search}%")
-                ->orWhere('email', 'ilike', "%{$search}%")
+                $q->where('nome', 'like', "%{$search}%")
+                ->orWhere('email', 'like', "%{$search}%")
                 ->orWhere('cpf', 'like', "%{$search}%");
             });
             //dd($query->toSql(), $query->getBindings());

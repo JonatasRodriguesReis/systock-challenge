@@ -24,7 +24,7 @@ class UserController extends Controller {
             return UserResource::collection($users);
         } catch (\Exception $e) {
             Log::error('Error fetching users: ' . $e->getMessage());
-            return response()->json(['error' => 'Falha ao listar usuários.'], 500);
+            return response()->json(['error' => 'Falha ao listar usuários.' . $e->getMessage() ], 500);
         }
     }
 
